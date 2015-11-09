@@ -6,8 +6,7 @@
 //  Copyright © 2015 Stefan Schmitt. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "CocoaRedis.h"
+#import "LSExternalLog.h"
 
 
 void sendMessage(NSString* message, NSString* host)
@@ -25,15 +24,15 @@ void sendMessage(NSString* message, NSString* host)
 
 void LSExternalLogInfo(NSString* string, NSString* host)
 {
-    sendMessage([NSString stringWithFormat:@"INFO: %@", string]);
+    sendMessage([NSString stringWithFormat:@"INFO: %@", string], host);
 }
 
 void LSExternalLogWarn(NSString* string, NSString* host)
 {
-    sendMessage([NSString stringWithFormat:@"WARN: %@", string]);
+    sendMessage([NSString stringWithFormat:@"WARN: %@", string], host);
 }
 
 void LSExternalLogError(NSString* string, NSString* host)
 {
-    sendMessage([NSString stringWithFormat:@"ERROR: %@", string]);
+    sendMessage([NSString stringWithFormat:@"ERROR: %@", string], host);
 }
