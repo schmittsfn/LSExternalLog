@@ -22,11 +22,11 @@ Pod::Spec.new do |s|
                         It provides asynchronious API using PromiseKit framework.
                         It comes with a comprehensive test suit modeled after Redis commands list."
 
-  s.homepage         = "https://github.com/sts2055/RedisKit"
+  s.homepage         = "https://github.com/sts2055/LSExternalLog"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Stefan Schmitt" => "sschmitt@molotov.tv" }
-  s.source           = { :git => "git@github.com:sts2055/RedisKit.git", :tag => "v#{s.version}" }
+  s.source           = { :git => "git@github.com:sts2055/LSExternalLog.git", :tag => "v#{s.version}" }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '8.0'

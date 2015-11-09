@@ -14,10 +14,10 @@ void sendMessage(NSString* message)
 {
     CocoaRedis* redis = [CocoaRedis new];
     
-    [[[redis connectWithHost:@"localhost"] then:^id(id value) {
+    [[[redis connectWithHost:@"172.16.0.106"] then:^id(id value) {
         return [redis publish:@"LSExternalLog" message:message];
     }] then:^id(id value) {
-        //        NSLog(@"Number of subscribers that received the message: %@", value);
+        NSLog(@"Number of subscribers that received the message: %@", value);
         return [redis quit];
     }];
 }
