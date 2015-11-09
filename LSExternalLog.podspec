@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "LSExternalLog"
-  s.version          = "0.0.1"
+  s.version          = "0.0.2"
   s.summary          = "RedisKit is a asynchronious client framework for Redis server, written in Objective-C."
 
 # This description is used to generate tags and improve search results.
