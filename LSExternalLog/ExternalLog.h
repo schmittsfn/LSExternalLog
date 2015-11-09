@@ -10,8 +10,8 @@
 #import "CocoaRedis.h"
 
 
-void LSExternalLogInfo(NSString* string);
+void LSExternalLogInfo(NSString* string, NSString* host);
 
-void LSExternalLogWarn(NSString* string);
+void LSExternalLogWarn(NSString* string, NSString* host);
 
-void LSExternalLogError(NSString* string);
+void LSExternalLogError(NSString* string, NSString* host);

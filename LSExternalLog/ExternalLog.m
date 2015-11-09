@@ -10,11 +10,11 @@
 #import "CocoaRedis.h"
 
 
-void sendMessage(NSString* message)
+void sendMessage(NSString* message, NSString* host)
 {
     CocoaRedis* redis = [CocoaRedis new];
     
-    [[[redis connectWithHost:@"172.16.0.106"] then:^id(id value) {
+    [[[redis connectWithHost:host] then:^id(id value) {
         return [redis publish:@"LSExternalLog" message:message];
     }] then:^id(id value) {
         NSLog(@"Number of subscribers that received the message: %@", value);
@@ -23,17 +23,17 @@ void sendMessage(NSString* message)
 }
 
 
-void LSExternalLogInfo(NSString* string)
+void LSExternalLogInfo(NSString* string, NSString* host)
 {
     sendMessage([NSString stringWithFormat:@"INFO: %@", string]);
 }
 
-void LSExternalLogWarn(NSString* string)
+void LSExternalLogWarn(NSString* string, NSString* host)
 {
     sendMessage([NSString stringWithFormat:@"WARN: %@", string]);
 }
 
-void LSExternalLogError(NSString* string)
+void LSExternalLogError(NSString* string, NSString* host)
 {
     sendMessage([NSString stringWithFormat:@"ERROR: %@", string]);
 }
