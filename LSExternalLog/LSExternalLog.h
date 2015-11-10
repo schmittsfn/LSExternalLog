@@ -15,3 +15,5 @@ void LSExternalLogInfo(NSString* string, NSString* host);
 void LSExternalLogWarn(NSString* string, NSString* host);
 
 void LSExternalLogError(NSString* string, NSString* host);
+
+void LSFillCredentials(NSString* host, void (^credentialsBlock)(NSString *userName, NSString* password));

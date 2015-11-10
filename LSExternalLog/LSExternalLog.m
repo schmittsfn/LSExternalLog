@@ -36,3 +36,24 @@ void LSExternalLogError(NSString* string, NSString* host)
 {
     sendMessage([NSString stringWithFormat:@"ERROR: %@", string], host);
 }
+
+void LSFillCredentials(NSString* host, void (^credentialsBlock)(NSString *userName, NSString* password))
+{
+    CocoaRedis* redis = [CocoaRedis new];
+    
+    __block NSString *aUserName = nil;
+    
+    [[[[[redis connectWithHost:host] then:^id(id value) {
+        NSLog(@"Connected.");
+        return [redis get: @"DEBUG_CREDENTIALS_USERNAME"];
+    }] then:^id(id value) {
+        aUserName = value;
+        return [redis get: @"DEBUG_CREDENTIALS_PASSWORD"];
+    }] then:^id(id value) {
+        credentialsBlock(aUserName, value);
+        return nil;
+    }] catch:^id(NSError *err) {
+        NSLog(@"Error: %@", err);
+        return nil;
+    }];
+}
